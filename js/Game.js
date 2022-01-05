@@ -42,10 +42,10 @@ class Game {
     bush = new Group();
    grass = new Group();
 
-    // Adding fuel sprite in the game
+    // Agregando sprite de combustible al juego
     this.addSprites(bush, 4, bushImage, 0.02);
 
-    // Adding coin sprite in the game
+    // Agregando sprite de moneda al juego
     this.addSprites(grass, 18, grassImage, 0.09);
   }
 
@@ -70,7 +70,7 @@ class Game {
     form.titleImg.position(40, 50);
     form.titleImg.class("gameTitleAfterEffect");
     
-    this.leadeboardTitle.html("Leaderboard");
+    this.leadeboardTitle.html("Tabla de puntuación");
     this.leadeboardTitle.class("resetText");
     this.leadeboardTitle.position(width / 3 - 60, 40);
 
@@ -92,13 +92,13 @@ class Game {
       image(track, 0, -height * 5, width, height * 6);
       this.showLeaderboard();
 
-      //index of the array
+      //índice de la matriz
       var index = 0;
       for (var plr in allPlayers) {
-        //add 1 to the index for every loop
+        //agrega 1 al índice por cada bucle
         index = index + 1;
 
-        //use data form the database to display the cars in x and y direction
+        //utiliza datos de la base de datos para mostrar los autos en la dirección x e y
         var x = allPlayers[plr].positionX;
         var y = height - allPlayers[plr].positionY;
 
@@ -115,7 +115,7 @@ class Game {
           this.handleGrass(index);
     camera.position.x =    animals[index - 1].position.x;
           camera.position.y =    animals[index - 1].position.y;
-          // Changing camera position in y direction
+          // Cambiando la posición de la cámara en la dirección y
          }}
       
       
@@ -142,7 +142,7 @@ class Game {
       (players[0].rank === 0 && players[1].rank === 0) ||
       players[0].rank === 1
     ) {
-      // &emsp;    This tag is used for displaying four spaces.
+      // &emsp;    Esta etiqueta se utiliza para mostrar 4 posiciones.
       leader1 =
         players[0].rank +
         "&emsp;" +
@@ -178,16 +178,16 @@ class Game {
     this.leader2.html(leader2);
   }
 
-      // handling keyboard events
+      // manejando eventos keyboard
       
 
 
   handleBush(index) {
-    // Adding fuel
+    // Agregando combustible
     animals[index - 1].overlap(bush, function(collector, collected) {
       player.bush = 185;
-      //collected is the sprite in the group collectibles that triggered
-      //the event
+      //recolectado está el sprite en el grupo de recolectable que activaron
+      //el evento
       collected.remove();
     });
   }
@@ -196,8 +196,8 @@ class Game {
     animals[index - 1].overlap(grass, function(collector, collected) {
       player.score += 21;
       player.update();
-      //collected is the sprite in the group collectibles that triggered
-      //the event
+      //recolectado está el sprite en el grupo de recolectable que activaron
+      //el evento
       collected.remove();
     });
   }
